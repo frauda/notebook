@@ -1,5 +1,6 @@
 class PhonesController < ApplicationController
   before_action :set_phone, only: [:show, :edit, :update, :destroy]
+  before_action :metod_phone, only: [:new, :edit]
 
   # GET /phones
   # GET /phones.json
@@ -62,6 +63,9 @@ class PhonesController < ApplicationController
   end
 
   private
+    def metod_phone
+      @metod_tel = Contact.all
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_phone
       @phone = Phone.find(params[:id])

@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :metod_contact, only: [:new, :edit]
 
   # GET /addresses
   # GET /addresses.json
@@ -62,6 +63,9 @@ class AddressesController < ApplicationController
   end
 
   private
+    def metod_contact
+      @met_contact = Contact.all
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_address
       @address = Address.find(params[:id])
